@@ -1,0 +1,66 @@
+1. What is the difference between supervised and unsupervised learning?
+Answer: Supervised learning uses labeled data to train models—each input has a corresponding output. For example, in price prediction, the model learns from features and known prices.
+Unsupervised learning deals with unlabeled data, and the model tries to find hidden patterns, like clustering similar data points. An example is customer segmentation based on buying behavior.
+
+
+
+
+2.What is overfitting and underfitting?
+Answer:
+
+Overfitting: The model performs well on training data but poorly on unseen data. It has learned noise and patterns too specific to the training data.
+
+Underfitting: The model is too simple to capture the underlying trends in the data, performing poorly on both training and testing sets. To prevent overfitting, we can use techniques like regularization, dropout, and cross-validation.
+
+
+
+3. How does a Convolutional Neural Network (CNN) work?
+Answer: CNNs are specialized for processing grid-like data like images. They use layers of filters (kernels) to detect features like edges, shapes, and objects. These filters slide across the image and create feature maps. Pooling layers then reduce spatial dimensions, and fully connected layers at the end make predictions. I used CNNs in my sign language project to extract spatial features from video frames.
+
+
+
+4. What is an LSTM, and why is it used?
+Answer: LSTM (Long Short-Term Memory) is a type of Recurrent Neural Network (RNN) that’s good at capturing long-term dependencies in sequential data. Unlike traditional RNNs, it can remember values over long durations using gates (input, forget, and output gates). In my sign language project, I used LSTM to understand temporal patterns between video frames, helping in sentence-level translation.
+
+
+
+
+
+5.. Explain your Diamond Price Prediction project.
+Answer: I developed a machine learning model to predict diamond prices using regression algorithms. I analyzed features like carat, cut, clarity, and color. After comparing multiple models, Random Forest performed best with 97% accuracy. I visualized data using Seaborn and Matplotlib, and deployed the final model using Flask for user-friendly interaction.
+
+
+
+
+
+
+6. How did you process the HOW2SIGN dataset?
+Answer: I extracted body landmarks using OpenPose from the video frames. Then, I structured the data into sequences suitable for training a CNN-LSTM model. I also performed normalization and filtering to reduce noise and improve model training efficiency. Currently, I’m working on optimizing the real-time frame processing pipeline.
+
+
+
+
+
+
+7. What tools and platforms are you comfortable with?
+Answer: I regularly use Python, Java, TensorFlow, and Flask for development. For data handling, I rely on Pandas and NumPy. I use MySQL for databases, GitHub for version control, and Google Colab or VS Code for coding. I’ve also explored Azure and basic DevOps practices like CI/CD and versioning.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
