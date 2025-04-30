@@ -1,15 +1,27 @@
 use Alt_mobility
 
+
+--Total number of table in the database
+
+select name from sys.tables;
+
+
+--Total number of records in the payments csv file
 select count(*) from payments;
 
 select * from payments
 
-select name from sys.tables;
+
+
+
+
+--Total number of records in the customer_orders csv file
 
 select count(*) from customer_orders;
 
+
 --Analyze Order Status:
---It is used to check the status of the orders and number of orders according to that 
+--It is used to check the status of the orders and number of orders according to that .
 SELECT 
     order_status, 
     COUNT(*) AS order_count
@@ -20,11 +32,12 @@ GROUP BY
 
 
 --Analyze Sales Data:
+
+--- checking for null
+select order_amount from customer_orders where order_amount is null;
+
+
 -- Total amount of the sales and average how much we are getting
-
-
--- select order_amount from customer_orders where order_amount is null;
-
 SELECT 
     SUM(order_amount) AS total_sales,
     AVG(order_amount) AS average_order_value
@@ -32,7 +45,7 @@ FROM
     customer_orders;
 
 
---Analyze Trends Over Time
+--Analyzing  Trends Over Time with respected to each month in each year
 
 SELECT
     FORMAT(order_date, 'yyyy-MM') AS order_month,
@@ -43,6 +56,7 @@ GROUP BY
     FORMAT(order_date, 'yyyy-MM')
 ORDER BY
     order_month;
+
 
 --Order count according to the customers(Each customer may have muliple orders)
 
@@ -56,6 +70,7 @@ GROUP BY
 ORDER BY 
     order_count DESC;
 
+
 -- To find the number of repeat customers (customers with more than 1 order):
 SELECT 
     COUNT(DISTINCT customer_id)
@@ -68,17 +83,9 @@ FROM
     ) AS subquery_alias;
 
 
-
-select count(distinct customer_id) from customer_orders where customer_id IN (
-select customer_id from customer_orders 
-group by customer_id 
-having  count(*)>1);
-
-
-
 ------------------------------------------------------------------------------------
 
---Repeat Ordering
+--Repeat Orderings
 
 SELECT 
     customer_id,
@@ -104,7 +111,10 @@ ORDER BY
     customer_id, order_month
 
 
+
+
 ---Analyze Payment Status:
+---Count of payments status wrt each status
 
 SELECT 
     payment_status, 
@@ -115,7 +125,7 @@ GROUP BY
     payment_status;
 
 
-----Payment Methods:
+----Payment Methods:(Type of payment methods used and their count)
 
 SELECT 
     payment_method,
@@ -144,6 +154,7 @@ ORDER BY
 
 
 --Order Details Report
+
 SELECT 
     co.*,
     p.*
@@ -154,9 +165,7 @@ JOIN
 
 
 --Customer Retention Analysis
-
---  This query is a starting point and might need adaptation for specific SQL dialects
---  and to handle edge cases.  It's conceptually how you'd approach cohort analysis.
+--This will be also shown in the power BI using visualization.
 
 WITH FirstOrders AS (
     SELECT 
